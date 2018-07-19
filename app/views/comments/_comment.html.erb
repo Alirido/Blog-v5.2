@@ -8,6 +8,6 @@
   <%= comment.body %>
 </p>
 
-<%= link_to 'Delete comment', [comment.article, comment], method: :delete, data: {confirm: 'Are you sure, bro?'} %>
+<%= link_to 'Delete comment', article_comment_path(comment.article, comment), method: :delete, data: {confirm: 'Are you sure, bro?'} %>
 
-<!-- article_comment_path(comment) -->
+<!-- [comment.article, comment] -->
