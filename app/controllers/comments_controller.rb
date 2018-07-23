@@ -2,9 +2,21 @@ class CommentsController < ApplicationController
 	http_basic_authenticate_with name: "Ali rido", password: "ali123", only: :destroy
 
 	def create
+		# binding.pry
 		@article = Article.find(params[:article_id])
-		comment = @article.comments.create(comment_params)
+		@comment = @article.comments.create(comment_params)
+		if @comment.errors.any?
+			flash[:error] = "Cannot make comment."
+		else 
+			flash[:success] = "Success."
+		end
 		redirect_to article_url(@article)
+		# if @comment.errors.any?
+		# 	# render "articles/show"
+		# 	redirect_to article_url(@article)
+		# else 
+		# 	redirect_to article_url(@article)
+		# end
 	end
 
 	def destroy

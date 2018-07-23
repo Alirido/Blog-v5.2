@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+		# @comments = Comment.where(article_id: params[:article_id])
 	end
 
 	def new
@@ -21,9 +22,10 @@ class ArticlesController < ApplicationController
 		@article = Article.new(article_params)
  
   		if @article.save
+  			flash[:success] = "Article saved."
   			redirect_to article_url(@article) # redirect_to article_url(article)
   		else
-  			# flash[:alert] = "Fails"
+  			flash[:error] = "Cannot save article."
   			render 'new' 
   		end
 	end
