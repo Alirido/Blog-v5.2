@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <%= flash[:notice] || flash[:alert] || flash[:error] || flash[:success] %>
+    <div class="container">
+      <%= flash[:notice] || flash[:alert] %>
+    </div>
     <%= yield %>
   </body>
 </html>
