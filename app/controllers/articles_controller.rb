@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-	http_basic_authenticate_with name: "Ali rido", password: "ali123", except: [:index, :show]
+	# http_basic_authenticate_with name: "Ali rido", password: "ali123", except: [:index, :show]
+	before_action :authenticate_user!, except: [:index]
 
 	def index
 		@article = Article.order(:title).page(params[:page])

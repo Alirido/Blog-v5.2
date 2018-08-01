@@ -1,3 +1,9 @@
+User :
+{
+	Email : test@aldo.com
+	Password : testing0123
+}
+
 1. Make error messages for comment
 2. Make flash notice alert when submit data to database
 
