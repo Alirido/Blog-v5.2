@@ -1,0 +1,34 @@
+1. Make error messages for comment
+2. Make flash notice alert when submit data to database
+
+<% @article.comments.each do |comment| %>
+	<strong>Commenter:</strong><%= comment.commenter %><br>
+	<strong>Body:</strong><%= comment.body %><br>
+<% end %>
+
+<%= form_with(model: [@article, @comment.new], local: true) do |form| %>
+		<% if @article.comments.errors.any? %>
+			<div id="error_explanation">
+				<h2>
+					<%= pluralize(@article.comments.errors.count, "error") %> prohibited this comment frorm being saved:
+				</h2>
+				<ul>
+					<% @article.comments.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+	<% end %>
+
+
+TEMPORARY SAVING :
+1. At _form.html.erb
+
+	form_with [@article, @article.comments.build)
+
+
+2. At application.html.erb
+	
+	<% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>

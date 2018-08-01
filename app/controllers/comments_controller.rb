@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
 		@article = Article.find(params[:article_id])
 		@comment = @article.comments.create(comment_params)
 		if @comment.errors.any?
-			flash[:error] = "Cannot make comment."
+			flash[:alert] = "Cannot make comment!"
 		else 
-			flash[:success] = "Success."
+			flash[:notice] = "Commented!"
 		end
 		redirect_to article_url(@article)
 		# if @comment.errors.any?
@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
 		# @article = Article.find(params[:article_id])
 		comment = Comment.find_by(article_id: params[:article_id], id: params[:id])
 		comment.destroy
+		flash[:notice] = "Successfully deleted the comment!"
 		redirect_to article_url(params[:article_id])
 	end
 

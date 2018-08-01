@@ -22,11 +22,13 @@ class ArticlesController < ApplicationController
 		@article = Article.new(article_params)
  
   		if @article.save
-  			flash[:success] = "Article saved."
-  			redirect_to article_url(@article) # redirect_to article_url(article)
+  			flash[:notice] = "Article has successfully posted!"
+  			redirect_to article_url(@article)
+  			# , notice: "Article has successfully posted!" # redirect_to article_url(article)
   		else
-  			flash[:error] = "Cannot save article."
-  			render 'new' 
+  			flash[:alert] = "Cannot save article."
+  			render 'new'
+  			# , alert: "Cannot save the article."
   		end
 	end
 
@@ -34,8 +36,10 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 
 		if @article.update(article_params)
+			flash[:notice] = "Successfully edited the article!"
 			redirect_to article_url(@article)
 		else
+			flash[:notice] = "Cannot edit the article!"
 			render 'edit'
 		end
 	end
@@ -43,7 +47,7 @@ class ArticlesController < ApplicationController
 	def destroy
 		article = Article.find(params[:id])
 		article.destroy
-
+		flash[:notice] = "Successfully deleted the article"
 		redirect_to articles_url
 	end
 
