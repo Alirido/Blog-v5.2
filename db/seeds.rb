@@ -8,7 +8,7 @@
 # require 'faker'
 # include Faker
 
-10.times do 
+15.times do 
 	Article.create(
 		title: Faker::Company.name,
 		text: Faker::MostInterestingManInTheWorld.quote
