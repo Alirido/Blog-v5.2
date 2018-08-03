@@ -2,6 +2,16 @@ User :
 {
 	Email : test@aldo.com
 	Password : testing0123
+} {
+	Email : 
+	password : testing01234
+} {
+	Email : test@ali.com
+	password : testing000
+} {
+	ADMIN 
+	Email : admin@example.com
+	Password : alirido01
 }
 
 1. Make error messages for comment
@@ -32,9 +42,3 @@ TEMPORARY SAVING :
 
 	form_with [@article, @article.comments.build)
 
-
-2. At application.html.erb
-	
-	<% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
-    <% end %>

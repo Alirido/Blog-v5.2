@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 	# http_basic_authenticate_with name: "Ali rido", password: "ali123", except: [:index, :show]
 	before_action :authenticate_user!, except: [:index]
+	before_action :ensure_admin_user!, only: [:edit, :destroy, :update]
 
 	def index
 		@article = Article.order(:title).page(params[:page])
@@ -50,6 +51,12 @@ class ArticlesController < ApplicationController
 		article.destroy
 		flash[:notice] = "Successfully deleted the article"
 		redirect_to articles_url
+	end
+
+	def ensure_admin_user!
+		unless current_user && current_user.admin
+			redirect_to articles_url, alert: "You don't belong there!"
+		end
 	end
 
 	private
