@@ -21,6 +21,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <%= f.select(:role_id, Role.where.not(name: "Admin").pluck(:name, :id), {}, {include_blank: true}) %>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

@@ -1,13 +1,17 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
- 
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
+<% @article.comments.each do |comment| %>
 
-<%= link_to 'Delete comment', article_comment_path(comment.article, comment), method: :delete, data: {confirm: 'Are you sure, bro?'} %>
+	<p>
+	  <strong>User:</strong>
+	  <%= comment.user.username %>
+	</p>
+	 
+	<p>
+	  <strong>Comment:</strong>
+	  <%= comment.body %>
+	</p>
+	<%= time_ago_in_words(comment.created_at) %>
 
+	<%= link_to 'Delete comment', article_comment_path(comment.article, comment), method: :delete, data: {confirm: 'Are you sure, bro?'} %>
+
+<% end %>
 <!-- [comment.article, comment] -->

@@ -1,18 +1,41 @@
-User :
+<-------------	 USER	--------------->
+PREMIUM_MEMBER :
 {
-	Email : test@aldo.com
-	Password : testing0123
-} {
-	Email : 
-	password : testing01234
-} {
-	Email : test@ali.com
-	password : testing000
-} {
-	ADMIN 
-	Email : admin@example.com
-	Password : alirido01
+	Email : alirido@ceo.com
+	Password : aliridoceo01
 }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEMBER :
+{
+	Email : rido@local.com
+	Password : ridolocal01
+} {
+	Email : soleh@local.com
+	Password : solehlocal01
+} {
+	Email : ali@local.com
+	Password : alilocal01
+} {
+	Email : aldo@local.com
+	Password : aldolocal01
+} {
+	Email : udin@local.com
+	Password : udinlocal01
+} {
+	Email : oji@local.com
+	Password : ojilocal01
+} {
+	Email : tyas@local.com
+	Password : tyaslocal01
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ADMIN :
+{
+	Email : admin@local.com
+	Password : adminlocal01
+}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Make error messages for comment
 2. Make flash notice alert when submit data to database
