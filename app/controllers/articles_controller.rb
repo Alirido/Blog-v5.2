@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	# http_basic_authenticate_with name: "Ali rido", password: "ali123", except: [:index, :show]
-	before_action :authenticate_user!, except: [:index]
+	before_action :authenticate_user!, except: [:index, :show]
 	before_action :ensure_admin_user!, only: [:edit, :destroy, :update]
 
 	def index
@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
+		@article.user_id = current_user.id
  
   		if @article.save
   			flash[:notice] = "Article has successfully posted!"
@@ -54,8 +55,8 @@ class ArticlesController < ApplicationController
 	end
 
 	def ensure_admin_user!
-		unless current_user && current_user.admin
-			redirect_to articles_url, alert: "You don't belong there!"
+		unless current_user && current_user.role.name == "Admin"
+			redirect_to articles_url, alert: "Access denied!"
 		end
 	end
 

@@ -8,9 +8,17 @@
 # require 'faker'
 # include Faker
 
-15.times do 
-	Article.create(
-		title: Faker::Company.name,
-		text: Faker::MostInterestingManInTheWorld.quote
-	)
-end
+# 15.times do 
+# 	Article.create(
+# 		title: Faker::Company.name,
+# 		text: Faker::MostInterestingManInTheWorld.quote
+# 	)
+# end
+
+# Role.create(name: "Admin")
+# Role.create(name: "Member")
+# Role.create(name: "Premium_member")
+
+# User.destroy_all
+
+# User.create(email: "admin@local.com", password: "adminlocal01", role_id: 1)
