@@ -54,12 +54,6 @@ class ArticlesController < ApplicationController
 		redirect_to articles_url
 	end
 
-	def ensure_admin_user!
-		unless current_user && current_user.role.name == "Admin"
-			redirect_to articles_url, alert: "Access denied!"
-		end
-	end
-
 	private
 		def article_params
 			params.require(:article).permit(:title, :text)
