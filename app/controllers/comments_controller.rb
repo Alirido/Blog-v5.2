@@ -1,14 +1,15 @@
 class CommentsController < ApplicationController
 	# http_basic_authenticate_with name: "Ali rido", password: "ali123", only: :destroy
 
+
 	def create
 		# binding.pry
 
 		@article = Article.find(params[:article_id])
-		@comment = @article.comments.create(comment_params.merge(user_id: current_user.id))
-		if @comment.errors.any?
-			flash[:alert] = "Comment cannot be blank!"
-			# flash[:alert] = @comment.errors.full_messages
+		comment = @article.comments.create(comment_params.merge(user_id: current_user.id))
+		if comment.errors.any?
+			# flash[:alert] = "Comment cannot post!"
+			flash[:alert] = comment.errors.full_messages.join(", ")
 		else 
 			flash[:notice] = "Commented!"
 		end
